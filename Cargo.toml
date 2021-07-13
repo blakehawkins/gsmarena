@@ -1,0 +1,11 @@
+[package]
+name = "gsmarena"
+version = "0.1.0"
+authors = ["Blake Hawkins <blakeh@palantir.com>"]
+edition = "2018"
+
+[dependencies]
+reqwest = "0.9.11"
+select = "0.4.2"
+histo = "0.1.0"
+structopt = "0.2"
