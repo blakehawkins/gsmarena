@@ -23,7 +23,7 @@ struct Opt {
     print_headers: bool,
 }
 
-static GSMARENA_URI: &'static str = "https://www.gsmarena.com/";
+static GSMARENA_URI: &str = "https://www.gsmarena.com/";
 
 // New phones with battery capacity like Pixel 3 XL or better.  Use macro-rules for inline fmtstring.
 macro_rules! gsmarena_query_fmtstring {
@@ -59,7 +59,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .text()?[..],
     )
     .find(Class("makers").descendant(Name("a")))
-    .into_iter()
     .filter_map(|a| a.attr("href"))
     .map(|u| -> Result<(), Box<dyn std::error::Error>> {
         // println!("{}", u);
@@ -68,37 +67,31 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let name = doc
             .find(Class("specs-phone-name-title"))
-            .into_iter()
             .next()
             .map(|s| s.text());
 
         let bat = doc
             .find(Name("strong").descendant(Attr("data-spec", "batsize-hl")))
-            .into_iter()
             .next()
             .map(|s| s.text());
 
         let os_string = doc
             .find(Class("specs-brief-accent").descendant(Attr("data-spec", "os-hl")))
-            .into_iter()
             .next()
             .map(|s| s.text());
 
         let release_string = doc
             .find(Class("specs-brief-accent").descendant(Attr("data-spec", "released-hl")))
-            .into_iter()
             .next()
             .map(|s| s.text());
 
         let price_string = doc
             .find(Class("nfo").and(Attr("data-spec", "price")))
-            .into_iter()
             .next()
             .map(|s| s.text());
 
         let screen_size = doc
             .find(Attr("data-spec", "displaysize-hl"))
-            .into_iter()
             .next()
             .map(|s| s.text());
 
