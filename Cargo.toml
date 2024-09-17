@@ -1,11 +1,11 @@
 [package]
 name = "gsmarena"
 version = "0.1.0"
-authors = ["Blake Hawkins <blakeh@palantir.com>"]
-edition = "2018"
+authors = ["Blake Hawkins <blake.hawkins.11@gmail.com>"]
+edition = "2021"
 
 [dependencies]
 reqwest = "0.9.11"
-select = "0.4.2"
+select = "0.6.0"
 histo = "0.1.0"
 structopt = "0.2"
